@@ -8,6 +8,7 @@ export class CdkContextSampleStack extends Stack {
 
     new nodejs.NodejsFunction(this, 'TestFunction', {
       functionName: 'test-function',
+      handler: 'src/index',
       timeout: Duration.seconds(buildConfig.Parameters.lambda.timeout),
     });
   }

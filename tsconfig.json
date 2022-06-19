@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2018",
     "module": "ES2020",
-    "lib": ["ES2020"],
+    "lib": ["ES2018"],
     "declaration": true,
     "strict": true,
     "noImplicitAny": true,
