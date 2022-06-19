@@ -1,16 +1,14 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { Duration, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as nodejs from 'aws-cdk-lib/aws-lambda-nodejs';
 
 export class CdkContextSampleStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props: StackProps, buildConfig: BuildConfig) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'CdkContextSampleQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new nodejs.NodejsFunction(this, 'TestFunction', {
+      functionName: 'test-function',
+      timeout: Duration.seconds(buildConfig.Parameters.lambda.timeout),
+    });
   }
 }
